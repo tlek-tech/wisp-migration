@@ -1,6 +1,6 @@
 # wisp-migration
 
-Database migration plugin and CLI tool for the [Wisp](../wisp) PHP micro-framework.
+Database migration plugin and CLI tool for the [Wisp](https://github.com/tlek-tech/wisp) PHP micro-framework.
 
 Adds migration versioning and batch tracking across MySQL, PostgreSQL, and SQLite, a service container binding for `\Wisp\Migrator` (`$app->migrator`), and a CLI tool (`wisp`) for running, rolling back, checking status, and scaffolding migrations.
 
