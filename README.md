@@ -14,7 +14,7 @@ Your Wisp core must support the plugin extension points this relies on:
 ## Install
 
 1. Copy the `plugins/migration/` folder from this repo into your Wisp project's `plugins/` folder:
-   ```
+   ```text
    your-wisp-project/
    └── plugins/
        └── migration/
@@ -23,16 +23,11 @@ Your Wisp core must support the plugin extension points this relies on:
                ├── Migration.php
                └── Migrator.php
    ```
-2. Copy the `wisp` CLI script into your project's root folder:
-   ```
-   your-wisp-project/
-   └── wisp
-   ```
-3. Ensure your project's `.env` specifies a supported database connection:
+2. Ensure your project's `.env` specifies a supported database connection:
    ```dotenv
    DB_CONNECTION=mysql    # mysql, pgsql, or sqlite
    ```
-4. That's it — Wisp's plugin loader picks up `plugins/migration/migration.php` automatically on boot and registers `$app->migrator`.
+3. That's it — Wisp's plugin loader picks up `plugins/migration/migration.php` automatically on boot, registers `$app->migrator`, and seamlessly adds all `migrate*` commands directly to Wisp's native CLI tool (`php wisp`).
 
 ## Usage
 
@@ -85,7 +80,7 @@ $rolledBack = $migrator->rollbackLastBatch();
 ```
 
 See `routes/migration-demo.php` in this repo for a runnable example (copy it into your project's
-`routes/` folder if you want the `/migration-demo` web dashboard and API endpoints).
+`routes/` folder if you want the `/migration-demo` web dashboard and API endpoints). The dashboard is completely standalone and zero-dependency (no MVC plugin or external template engine required).
 
 ## License
 

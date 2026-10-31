@@ -4,8 +4,13 @@ namespace Wisp;
 class Migrator {
     protected string $migrationsPath;
 
-    public function __construct() {
-        $this->migrationsPath = realpath(__DIR__ . '/../../../') . '/database/migrations';
+    public function __construct(?string $migrationsPath = null) {
+        if ($migrationsPath !== null) {
+            $this->migrationsPath = $migrationsPath;
+        } else {
+            $appRoot = defined('APP_ROOT') ? APP_ROOT : (realpath(__DIR__ . '/../../../') ?: dirname(__DIR__, 3));
+            $this->migrationsPath = $appRoot . '/database/migrations';
+        }
     }
 
     /**
